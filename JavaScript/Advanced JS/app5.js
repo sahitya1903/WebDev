@@ -13,13 +13,13 @@ async function getFacts() {
     }   
 }
 
-let p=document.querySelector('p');
+let p1=document.querySelector('.p1');
 let btn=document.querySelector('.btn');
 
 btn.addEventListener('click',async ()=>{
     let fact=await getFacts();
     console.log(fact);
-    p.innerText=fact;
+    p1.innerText=fact;
 })
 
 
@@ -44,4 +44,24 @@ btn2.addEventListener('click',async()=>{
     console.log(link);
     // img.src=link;
     img.setAttribute('src',link);
+})
+
+let url3='https://icanhazdadjoke.com/';
+
+async function getJoke(){
+    try{
+        const config={headers: {Accept: 'application/json'} };
+        let res=await axios.get(url3,config);
+        // console.log(res.data);
+        return res.data.joke;
+    }catch(error){
+        console.log(error);
+        return "No joke found";
+    }
+}
+let btn3=document.querySelector('.btn3');
+let p2=document.querySelector('.p2');
+btn3.addEventListener('click',async ()=>{
+    let joke=await getJoke();
+    p2.innerText=joke;
 })
