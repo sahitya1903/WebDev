@@ -12,9 +12,3 @@ const obj={
 
 module.exports=obj;
 
-exports.k=1;  //Not works if module.exports is overwritten by new object
-
-// module.exports={
-//     name:'sahitya',
-//     marks:100
-// };
