@@ -14,8 +14,5 @@ console.log(math);
 
 console.log(math.sum(2,3));
 
-console.log(math.k);
-
-
 const info=require("./Fruits");
 console.log(info);
