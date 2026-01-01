@@ -15,5 +15,15 @@ app.listen(port,()=>{
 
 app.get("/",(req,res)=>{
     // res.send("This is home");
-    res.render("home");
+    res.render("home");     //send home.ejs file as response
 })
+
+app.get("/hello",(req,res)=>{
+    res.send("hello");
+})
+
+app.get("/rolldice",(req,res)=>{
+    let diceVal=Math.floor(Math.random()*6)+1;
+    res.render("rolldice.ejs",{ diceVal });
+})
+
