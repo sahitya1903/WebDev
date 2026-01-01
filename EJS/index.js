@@ -29,5 +29,6 @@ app.get("/rolldice",(req,res)=>{
 
 app.get("/ig/:username",(req,res)=>{
     let {username}=req.params;
-    res.render('ig.ejs',{username});
+    const followers=['a','b','c','d'];
+    res.render('ig.ejs',{username,followers});
 })
