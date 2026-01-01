@@ -27,3 +27,7 @@ app.get("/rolldice",(req,res)=>{
     res.render("rolldice.ejs",{ diceVal });
 })
 
+app.get("/ig/:username",(req,res)=>{
+    let {username}=req.params;
+    res.render('ig.ejs',{username});
+})
