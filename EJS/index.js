@@ -27,8 +27,21 @@ app.get("/rolldice",(req,res)=>{
     res.render("rolldice.ejs",{ diceVal });
 })
 
-app.get("/ig/:username",(req,res)=>{
+app.get("/igbasic/:username",(req,res)=>{
     let {username}=req.params;
     const followers=['a','b','c','d'];
-    res.render('ig.ejs',{username,followers});
+    res.render('igbasic.ejs',{username,followers});
+})
+
+app.get("/ig/:username",(req,res)=>{
+    let {username}=req.params;
+    const instaData=require("./data.json");
+    const data=instaData[username];
+    console.log(data);
+
+    if(data){
+        res.render('ig.ejs',{ data});
+    }else{
+        res.render('error.ejs');
+    }
 })
