@@ -3,6 +3,9 @@ const app=express();
 const port=8080;
 const path=require('path');
 
+const {v4:uuidv4}=require('uuid');      //UUID package
+
+
 app.use(express.urlencoded({extended:true}));
 
 app.set('view engine','ejs');
@@ -12,14 +15,17 @@ app.use(express.static(path.join(__dirname,'public')));
 
 let posts=[
     {
+        id: uuidv4(),
         username:"apnacollege",
         content:"I love coding",
     },
     {
+        id: uuidv4(),
         username:"shradha",
         content:"Hardwork is the key to success",
     },
     {
+        id: uuidv4(),
         username:"sahitya",
         content:"I love travelling",
     },
