@@ -29,7 +29,18 @@ insert into user
 (id,age,name,email,followers,following)
 values
 (1,18,'adam','abc@gmail.com',123,145),
-(2,20,'eve','xyz@gmail.com',456,900);
+(2,20,'eve','xyz@gmail.com',456,900),
+(3,18,'adam2','abcd@gmail.com',600,456),
+(4,20,'eve2','wxyz@gmail.com',900,898),
+(5,19,'adam3','bcd@gmail.com',400,500),
+(6,21,'eve3','wxy@gmail.com',700,800);
+
+insert into posts
+(id,content,user_id)
+values
+(1,'hi',7),
+(2,'hello',6),
+(3,'code',2);
 
 select id,age from user;
 
@@ -39,17 +50,6 @@ select * from user;
 
 SELECT * FROM user WHERE (followers>=200);
 
-insert into user 
-(id,age,name,email,followers,following)
-values
-(3,18,'adam2','abcd@gmail.com',600,456),
-(4,20,'eve2','wxyz@gmail.com',900,898);
-
-insert into user 
-(id,age,name,email,followers,following)
-values
-(5,19,'adam3','bcd@gmail.com',400,500),
-(6,21,'eve3','wxy@gmail.com',700,800);
 
 SELECT name,age,followers FROM user
 WHERE (age>18 AND followers>500);
