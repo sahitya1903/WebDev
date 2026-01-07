@@ -1,19 +1,3 @@
-CREATE DATABASE COLLEGE;
-
-USE college;
-
-CREATE TABLE student(
- rollno int,
- name varchar(30),
- age int
-);
-
-INSERT INTO student VALUES
-(101,'adam',12),
-(102,'bob',14);
-
-SELECT * FROM student;
-
 create database if not exists instagram;
 
 use instagram;
