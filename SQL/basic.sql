@@ -14,14 +14,13 @@ INSERT INTO student VALUES
 
 SELECT * FROM student;
 
-show tables;
-
-show databases;
-
-
 create database if not exists instagram;
 
 use instagram;
+
+show tables;
+
+show databases;
 
 create table user(
 	id int ,
@@ -53,3 +52,32 @@ select id,age from user;
 select distinct age from user;
 
 select * from user;
+
+SELECT * FROM user WHERE (followers>=200);
+
+insert into user 
+(id,age,name,email,followers,following)
+values
+(3,18,'adam2','abcd@gmail.com',600,456),
+(4,20,'eve2','wxyz@gmail.com',900,898);
+
+insert into user 
+(id,age,name,email,followers,following)
+values
+(5,19,'adam3','bcd@gmail.com',400,500),
+(6,21,'eve3','wxy@gmail.com',700,800);
+
+SELECT name,age,followers FROM user
+WHERE (age>18 AND followers>500);
+
+SELECT name,age,followers FROM user
+WHERE age BETWEEN 19 AND 21;
+
+SELECT name,age,followers FROM user
+WHERE email IN ('bcd@gmail.com','wxy@gmail.com');
+
+SELECT name,age,followers FROM user
+WHERE email NOT IN ('bcd@gmail.com','wxy@gmail.com');
+
+select * from user
+LIMIT 2;
