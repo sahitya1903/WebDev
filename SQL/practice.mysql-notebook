@@ -1,0 +1,374 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nCREATE DATABASE IF NOT EXISTS college;\nUSE college;\nCREATE TABLE Teacher(\n    id INT PRIMARY KEY,\n    name VARCHAR(30),\n    subject VARCHAR(30),\n    salary FLOAT\n);\nINSERT INTO Teacher (id,name,subject,salary)\nVALUES\n(23,'ajay','math',50000),\n(47,'bharat','english',60000),\n(18,'chetan','chemistry',45000),\n(9,'divya','physics',75000);\nSELECT * FROM teacher;\n\nSELECT * FROM teacher\nWHERE salary>55000;\n\nALTER TABLE teacher\nCHANGE COLUMN salary ctc INT;\nSELECT * FROM teacher;\n\nUPDATE teacher\nSET ctc=ctc*1.25;\nSELECT * FROM teacher;\n\nALTER TABLE teacher\nADD COLUMN city VARCHAR(50) DEFAULT 'Gurgaon';\nSELECT * FROM teacher;\n\nALTER TABLE teacher\nDROP COLUMN ctc;\nSELECT * FROM teacher;\n\nCREATE TABLE student(\nroll_no int PRIMARY KEY,\nname VARCHAR(50),\ncity VARCHAR(50),\nmarks INT\n);\n\nINSERT INTO student(roll_no,name,city,marks) VALUES\n(110,'adam','Delhi',76),\n(108,'bob','Mumbai',65),\n(124,'casey','Pune',94),\n(112,'duke','Pune',80);\nSELECT * FROM student;\n\nSELECT * FROM student\nWHERE marks>75;\n\nSELECT DISTINCT city FROM student;\n\nSELECT city FROM student\nGROUP BY city;\n\nSELECT city,MAX(marks) FROM student\nGROUP BY city;\n\nSELECT AVG(marks) from student;\n\nALTER TABLE student\nADD COLUMN grade VARCHAR(2);\n\nUPDATE student\nSET grade='O' WHERE marks>=80;\n\nUPDATE student\nSET grade='A' WHERE marks BETWEEN 70 AND 79 ;\n\nUPDATE student\nSET grade='B' WHERE marks BETWEEN 60 AND 69;\n\nSELECT * FROM student;\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 77,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 77,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 1,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 0
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 144.5,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 76,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "cf325dda-87ee-4b1e-a9b1-2d89751011a6",
+                            "content": "OK, 1 row affected in 2.93ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "a08374a0-e4b8-4300-f24c-5c3f0a169773",
+                            "content": "OK, 0 records retrieved in 1.596ms"
+                        },
+                        {
+                            "type": 0,
+                            "index": 2,
+                            "content": "MySQL Error (1050): Table 'teacher' already exists",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 38
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 38,
+                            "length": 13
+                        },
+                        "contentStart": 39,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 51,
+                            "length": 113
+                        },
+                        "contentStart": 52,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 164,
+                            "length": 171
+                        },
+                        "contentStart": 165,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 335,
+                            "length": 23
+                        },
+                        "contentStart": 336,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 358,
+                            "length": 43
+                        },
+                        "contentStart": 360,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 401,
+                            "length": 51
+                        },
+                        "contentStart": 403,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 452,
+                            "length": 23
+                        },
+                        "contentStart": 453,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 475,
+                            "length": 34
+                        },
+                        "contentStart": 477,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 509,
+                            "length": 23
+                        },
+                        "contentStart": 510,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 532,
+                            "length": 68
+                        },
+                        "contentStart": 534,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 600,
+                            "length": 23
+                        },
+                        "contentStart": 601,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 623,
+                            "length": 38
+                        },
+                        "contentStart": 625,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 661,
+                            "length": 23
+                        },
+                        "contentStart": 662,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 684,
+                            "length": 97
+                        },
+                        "contentStart": 686,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 781,
+                            "length": 152
+                        },
+                        "contentStart": 783,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 933,
+                            "length": 23
+                        },
+                        "contentStart": 934,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 956,
+                            "length": 39
+                        },
+                        "contentStart": 958,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 995,
+                            "length": 36
+                        },
+                        "contentStart": 997,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1031,
+                            "length": 41
+                        },
+                        "contentStart": 1033,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1072,
+                            "length": 52
+                        },
+                        "contentStart": 1074,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1124,
+                            "length": 33
+                        },
+                        "contentStart": 1126,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1157,
+                            "length": 50
+                        },
+                        "contentStart": 1159,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1207,
+                            "length": 47
+                        },
+                        "contentStart": 1209,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1254,
+                            "length": 62
+                        },
+                        "contentStart": 1256,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1316,
+                            "length": 61
+                        },
+                        "contentStart": 1318,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1377,
+                            "length": 24
+                        },
+                        "contentStart": 1379,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 77,
+                "end": 77,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
