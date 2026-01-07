@@ -65,3 +65,99 @@ WHERE email NOT IN ('bcd@gmail.com','wxy@gmail.com');
 
 select * from user
 LIMIT 2;
+
+SELECT name,age,followers FROM user
+ORDER BY followers ASC;
+
+SELECT MAX(followers) FROM user;
+
+SELECT SUM(followers) FROM user;
+
+SELECT COUNT(age) FROM user
+WHERE age=18;
+
+SELECT age,MAX(followers) FROM user
+GROUP BY age;
+
+SELECT age,MAX(followers) FROM user
+GROUP BY age HAVING (MAX(followers)>600);
+
+SELECT age,MAX(followers) 
+FROM user
+WHERE id>2
+GROUP BY age 
+HAVING (MAX(followers)>400)
+ORDER BY age
+ASC;
+
+SET SQL_SAFE_UPDATES=0;
+
+UPDATE user
+SET name='bob' WHERE id=3;
+
+DELETE FROM user
+WHERE id=6;
+
+ALTER TABLE user
+ADD COLUMN city VARCHAR(25) DEFAULT "Delhi";
+
+SELECT * FROM user;
+
+ALTER TABLE user
+DROP COLUMN city;
+
+SELECT * FROM user;
+
+ALTER TABLE user
+RENAME TO instaUser;
+
+SELECT * FROM instaUser;
+
+ALTER TABLE instaUser
+RENAME TO user;
+
+ALTER TABLE user
+CHANGE COLUMN followers subs INT DEFAULT 0;
+
+SELECT * FROM user;
+
+ALTER TABLE user
+MODIFY subs INT DEFAULT 5;
+
+SELECT * FROM user;
+
+ALTER TABLE user
+ADD CONSTRAINT chk_age CHECK(age>=13);
+
+ALTER TABLE user
+DROP CONSTRAINT user_chk_1; 
+
+insert into user 
+(id,age,name,email,subs,following)
+values
+(6,14,'ram','mno@gmail.com',700,500),
+(7,15,'shyam','pqr@gmail.com',800,600),
+(8,16,'gita','tuv@gmail.com',900,700),
+(9,17,'sita','jkl@gmail.com',1000,800);
+
+insert into user 
+(id,age,name,email,following)
+values
+(10,21,'adi','fgh@gmail.com',500);
+
+UPDATE user
+SET name='mali' WHERE name='adam3';
+
+UPDATE user
+SET name='anu' WHERE name='eve2';
+
+SELECT * FROM user;
+
+SELECT * FROM posts;
+
+TRUNCATE TABLE posts;
+SELECT * FROM posts;
+
+DROP TABLE posts;
+SELECT * FROM posts;
+
