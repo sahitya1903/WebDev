@@ -38,7 +38,7 @@ values
 insert into posts
 (id,content,user_id)
 values
-(1,'hi',7),
+(1,'hi',5),
 (2,'hello',6),
 (3,'code',2);
 
