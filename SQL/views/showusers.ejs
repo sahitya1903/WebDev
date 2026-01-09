@@ -19,9 +19,14 @@
         </tr>
         <% for(let i=0;i<result.length;i++){%>
        <tr>
-            <th><%= result[i].id %></th>
-            <th><%= result[i].username %></th>
-            <th><%= result[i].email %></th>
+            <td><%= result[i].id %></td>
+            <td><%= result[i].username %></td>
+            <td><%= result[i].email %></td>
+            <td>
+                <form method="get" action="/user/<%= result[i].id %>/edit">
+                    <button>Edit username</button>
+                </form>
+            </td>
         </tr>
         <% } %>
     </table>
