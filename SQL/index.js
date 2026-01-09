@@ -3,6 +3,10 @@ const mysql = require('mysql2');
 const express=require('express');
 const app=express();
 const port=8080;
+const path=require('path');
+
+app.set('view engine','ejs');
+app.set('views', path.join(__dirname,'/views'));
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -32,37 +36,35 @@ const connection = mysql.createConnection({
   // };
 // };
 
-let getRandomUser=()=>{
-  return [                            //array of fake data values
-    faker.string.uuid(),
-    faker.internet.username(),
-    faker.internet.email(),
-    faker.internet.password()
-  ];
-};
 
-/*
 
-let q="INSERT INTO user (id,username,email,password) VALUES ? ";
+// let getRandomUser=()=>{
+//   return [                            //array of fake data values
+//     faker.string.uuid(),
+//     faker.internet.username(),
+//     faker.internet.email(),
+//     faker.internet.password()
+//   ];
+// };
 
-//Inserting new fake data
-let data=[];
-for(let i=0;i<100;i++){
-  data.push(getRandomUser());   //100 users fake data
-}
+// //Inserting new fake data
+// let q="INSERT INTO user (id,username,email,password) VALUES ? ";
+// let data=[];
+// for(let i=0;i<100;i++){
+//   data.push(getRandomUser());   //100 users fake data
+// }
 
-try{
-    connection.query(q,[ data ] ,(err,result)=>{
-        if(err) throw err;
-        console.log(result);
-        console.log(result.length);
-    });
-} catch(err){
-    console.log(err);
-}
-connection.end();
+// try{
+//     connection.query(q,[ data ] ,(err,result)=>{
+//         if(err) throw err;
+//         console.log(result);
+//         console.log(result.length);
+//     });
+// } catch(err){
+//     console.log(err);
+// }
+// connection.end();
 
-*/
 
 // app.get('/',(req,res)=>{
 //   res.send("Welcome to home page");
@@ -73,8 +75,8 @@ app.get('/',(req,res)=>{
     let q="SELECT count(*) FROM user";
     connection.query(q,(err,result)=>{
         if(err) throw err;
-        console.log(result[0]["count(*)"]);
-        res.send('success');
+        let count=result[0]["count(*)"];
+        res.render('home.ejs',{count}) ;
     });
   } catch(err){
       console.log(err);
