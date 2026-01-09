@@ -1,5 +1,27 @@
 const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
+const express=require('express');
+const app=express();
+const port=8080;
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'college',
+  password:'root'
+});
+
+
+//Single Row insertion
+// let q="INSERT INTO user (id,username,email,password) VALUES (?,?,?,?)"; 
+// let user=['123','123_new','abc@gmail.com','abc'];
+
+//Multiple rows insertion
+// let users=[
+//   ['123b','123b_new','abcd@gmail.com','abcd'],
+//   ['123c','123c_new','bc@gmail.com','bc']
+// ];
+
 
 // let getRandomUser=()=>{
   // return {                         //object key value pair fake data
@@ -19,23 +41,7 @@ let getRandomUser=()=>{
   ];
 };
 
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'college',
-  password:'root'
-});
-
-//Single Row insertion
-// let q="INSERT INTO user (id,username,email,password) VALUES (?,?,?,?)"; 
-// let user=['123','123_new','abc@gmail.com','abc'];
-
-//Multiple rows insertion
-// let users=[
-//   ['123b','123b_new','abcd@gmail.com','abcd'],
-//   ['123c','123c_new','bc@gmail.com','bc']
-// ];
+/*
 
 let q="INSERT INTO user (id,username,email,password) VALUES ? ";
 
