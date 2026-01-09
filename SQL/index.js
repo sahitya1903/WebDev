@@ -62,4 +62,27 @@ try{
 }
 connection.end();
 
+*/
 
+// app.get('/',(req,res)=>{
+//   res.send("Welcome to home page");
+// })
+
+app.get('/',(req,res)=>{
+  try{
+    let q="SELECT count(*) FROM user";
+    connection.query(q,(err,result)=>{
+        if(err) throw err;
+        console.log(result[0]["count(*)"]);
+        res.send('success');
+    });
+  } catch(err){
+      console.log(err);
+      res.send("Some error in DB");
+  }
+});
+
+
+app.listen(port,()=>{
+  console.log('Listening on port:',port);
+});
