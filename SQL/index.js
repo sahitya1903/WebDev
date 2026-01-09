@@ -70,6 +70,7 @@ const connection = mysql.createConnection({
 //   res.send("Welcome to home page");
 // })
 
+//Home Route
 app.get('/',(req,res)=>{
   try{
     let q="SELECT count(*) FROM user";
@@ -83,6 +84,24 @@ app.get('/',(req,res)=>{
       res.send("Some error in DB");
   }
 });
+
+
+//Show Route
+app.get("/user",(req,res)=>{
+  try{
+    let q="SELECT id,username,email FROM user";
+    connection.query(q,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.render('showusers.ejs',{result}) ;
+    });
+  } catch(err){
+      console.log(err);
+      res.send("Some error in DB");
+  }
+})
+
+//Update Route
 
 
 app.listen(port,()=>{
