@@ -6,6 +6,8 @@ const port=8080;
 const path=require('path');
 const methodOverride=require('method-override');
 
+const { v4: uuidv4 } = require("uuid");
+
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:true}));
 
@@ -145,6 +147,27 @@ app.patch('/user/:id',(req,res)=>{
   } catch(err){
       console.log(err);
       res.send("Some error in DB");
+  }
+})
+
+//Serve new user form
+app.get('/user/new',(req,res)=>{
+  res.render('new.ejs');
+});
+//Add new user to database
+app.post('/user/new',(req,res)=>{
+  let {username,email,password}=req.body;
+  let id=uuidv4();
+  let q=`INSERT INTO user (id,username,email,password) values ('${id}','${username}','${email}','${password}')`;
+  try{
+    connection.query(q,(err,result)=>{
+      if (err) throw err;
+      console.log('added user');
+      res.redirect('/user');
+    });
+  }catch(err){
+    console.log(err);
+    res.send("Some error in DB");
   }
 })
 
