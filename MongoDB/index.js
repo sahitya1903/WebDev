@@ -35,9 +35,20 @@ const User=mongoose.model("User",userSchema);
 //     .then(res=>console.log(res))
 //     .catch(err=>console.log(err));
 
-User.insertMany([
-    {name:'Tony',email:'tony@gmail.com',age:18},
-    {name:'Bruce',email:'bruce@gmail.com',age:19},
-    {name:'Peter',email:'peter@gmail.com',age:17},
-]).then(res=>console.log(res))
-.catch(err=>console.log(err));
+// User.insertMany([
+//     {name:'Tony',email:'tony@gmail.com',age:18},
+//     {name:'Bruce',email:'bruce@gmail.com',age:19},
+//     {name:'Peter',email:'peter@gmail.com',age:17},
+// ]).then(res=>console.log(res))
+// .catch(err=>console.log(err));
+
+
+
+User.find({age:{$gt:20}})
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err));
+
+User.findOne({age:{$gt:20}})
+    .then(res=>console.log(res.name))
+    .catch(err=>console.log(err));
+
