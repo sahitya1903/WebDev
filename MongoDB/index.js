@@ -16,21 +16,28 @@ const userSchema=new mongoose.Schema({      //define schema
 
 const User=mongoose.model("User",userSchema);
 
-const user1=new User({
-    name:'adam',
-    email:'adam@gmail.com',
-    age:48
-});
+// const user1=new User({
+//     name:'adam',
+//     email:'adam@gmail.com',
+//     age:48
+// });
 
-user1.save();
+// user1.save();        //returns a promise
 
-const user2=new User({
-    name:'eve',
-    email:'eve@gmail.com',
-    age:23
-});
+// const user2=new User({
+//     name:'eve',
+//     email:'eve@gmail.com',
+//     age:23
+// });
 
-user2
-    .save()
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err));
+// user2
+//     .save()
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+User.insertMany([
+    {name:'Tony',email:'tony@gmail.com',age:18},
+    {name:'Bruce',email:'bruce@gmail.com',age:19},
+    {name:'Peter',email:'peter@gmail.com',age:17},
+]).then(res=>console.log(res))
+.catch(err=>console.log(err));
