@@ -1,3 +1,17 @@
 const mongoose=require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/college'); //Async function
 
+main()
+    .then(()=> console.log("connection successful"))
+    .catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/test');
+}
+
+const userSchema=new mongoose.Schema({      //define schema
+    name: String,
+    email: String,
+    age: Number
+})
+
+const user=mongoose.model("user",userSchema);   
