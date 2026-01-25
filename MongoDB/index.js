@@ -36,9 +36,12 @@ const User=mongoose.model("User",userSchema);
 //     .catch(err=>console.log(err));
 
 // User.insertMany([
-//     {name:'Tony',email:'tony@gmail.com',age:18},
-//     {name:'Bruce',email:'bruce@gmail.com',age:19},
-//     {name:'Peter',email:'peter@gmail.com',age:17},
+//     {name:'Tony',email:'tony@gmail.com',age:17},
+//     {name:'Bruce',email:'bruce@gmail.com',age:18},
+//     {name:'Peter',email:'peter@gmail.com',age:19},
+//     {name:'Lucy',email:'lucy@gmail.com',age:20},
+//     {name:'Bob',email:'bob@gmail.com',age:21},
+//     {name:'Dyna',email:'dyna@gmail.com',age:22},
 // ]).then(res=>console.log(res))
 // .catch(err=>console.log(err));
 
@@ -68,10 +71,18 @@ const User=mongoose.model("User",userSchema);
 //     .then(res=>console.log(res))
 //     .catch(err=>console.log(err));
 
-User.deleteOne({name:'adam'})
+// User.deleteOne({name:'adam'})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+// User.deleteMany({age:{$gt:18}})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+User.findOneAndDelete({age:22})
     .then(res=>console.log(res))
     .catch(err=>console.log(err));
 
-User.deleteMany({age:{$gt:20}})
+User.findByIdAndDelete("69764cb3ebd4c48340294450")
     .then(res=>console.log(res))
     .catch(err=>console.log(err));
