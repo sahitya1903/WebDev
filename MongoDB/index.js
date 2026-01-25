@@ -14,4 +14,23 @@ const userSchema=new mongoose.Schema({      //define schema
     age: Number
 })
 
-const user=mongoose.model("user",userSchema);   
+const User=mongoose.model("User",userSchema);
+
+const user1=new User({
+    name:'adam',
+    email:'adam@gmail.com',
+    age:48
+});
+
+user1.save();
+
+const user2=new User({
+    name:'eve',
+    email:'eve@gmail.com',
+    age:23
+});
+
+user2
+    .save()
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err));
