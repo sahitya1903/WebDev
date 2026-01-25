@@ -52,10 +52,14 @@ const User=mongoose.model("User",userSchema);
 //     .then(res=>console.log(res.name))
 //     .catch(err=>console.log(err));
 
-User.updateOne({name:'Bruce'},{age:49})
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err)); 
+// User.updateOne({name:'Bruce'},{age:49})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err)); 
 
-User.updateMany({age:{$gt:20}},{age:25})
+// User.updateMany({age:{$gt:20}},{age:25})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err)); 
+
+User.findOneAndUpdate({name:'Bruce'},{age:30},{new:true})
     .then(res=>console.log(res))
-    .catch(err=>console.log(err)); 
+    .catch(err=>console.log(err));
