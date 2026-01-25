@@ -13,9 +13,22 @@ const bookSchema=new mongoose.Schema({      //define schema
     title:{
         type:String,
         required:true,
+        maxLength:20
     },
     author: String,
-    price: Number
+    price: {
+        type: Number,
+        min:1
+    },
+    discount:{
+        type:Number,
+        default:0,
+    },
+    genre:[String],
+    category:{
+        type:String,
+        enum:['fiction','non-fiction'],
+    }
 })
 
 const Book=mongoose.model("Book",bookSchema);
@@ -30,12 +43,32 @@ const Book=mongoose.model("Book",bookSchema);
 //     .then(res=>console.log(res))
 //     .catch(err=>console.log(err));
 
-let book2=new Book({
-    title:'Mathematics Class XI',
+// let book2=new Book({
+//     title:'Mathematics Class XI',
+//     author:'RD Sharma',
+//     price:'299',    //implicitly typecasted to number
+// })
+
+// book2.save()
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+// let book3=new Book({
+//     title:'Mathematics Class X',
+//     author:'RD Sharma'
+// })
+
+// book3.save()
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+let book4=new Book({
+    title:'Mathematics Class IX',
     author:'RD Sharma',
-    price:'299',    //implicitly typecasted to number
+    genre:['maths','study'],
+    category:'non-fiction'
 })
 
-book2.save()
+book4.save()
     .then(res=>console.log(res))
     .catch(err=>console.log(err));
