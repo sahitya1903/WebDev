@@ -60,10 +60,18 @@ const User=mongoose.model("User",userSchema);
 //     .then(res=>console.log(res))
 //     .catch(err=>console.log(err)); 
 
-User.findOneAndUpdate({name:'Bruce'},{age:30},{new:true})
+// User.findOneAndUpdate({name:'Bruce'},{age:30},{new:true})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+// User.findByIdAndUpdate({_id:"69763adcdc67e8f1c6f61a44"},{age:30},{new:true})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+User.deleteOne({name:'adam'})
     .then(res=>console.log(res))
     .catch(err=>console.log(err));
 
-User.findByIdAndUpdate({_id:"69763adcdc67e8f1c6f61a44"},{age:30},{new:true})
+User.deleteMany({age:{$gt:20}})
     .then(res=>console.log(res))
     .catch(err=>console.log(err));
