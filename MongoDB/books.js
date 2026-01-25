@@ -18,7 +18,8 @@ const bookSchema=new mongoose.Schema({      //define schema
     author: String,
     price: {
         type: Number,
-        min:1
+        // min:1
+        min:[1,"Price too low for amazon selling"]
     },
     discount:{
         type:Number,
