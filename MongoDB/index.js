@@ -44,11 +44,18 @@ const User=mongoose.model("User",userSchema);
 
 
 
-User.find({age:{$gt:20}})
+// User.find({age:{$gt:20}})
+//     .then(res=>console.log(res))
+//     .catch(err=>console.log(err));
+
+// User.findOne({age:{$gt:20}})
+//     .then(res=>console.log(res.name))
+//     .catch(err=>console.log(err));
+
+User.updateOne({name:'Bruce'},{age:49})
     .then(res=>console.log(res))
-    .catch(err=>console.log(err));
+    .catch(err=>console.log(err)); 
 
-User.findOne({age:{$gt:20}})
-    .then(res=>console.log(res.name))
-    .catch(err=>console.log(err));
-
+User.updateMany({age:{$gt:20}},{age:25})
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err)); 
