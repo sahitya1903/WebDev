@@ -2,16 +2,25 @@ const express=require('express');
 const app=express();
 
 
-//MiddleWare Chaining
-app.use((req,res,next)=>{
-    console.log('Hey, I am Middleware 1');
-    // res.send('Middleware ends');
-    next();
-})
+// //MiddleWare Chaining
+// app.use((req,res,next)=>{
+//     console.log('Hey, I am Middleware 1');
+//     // res.send('Middleware ends');
+//     next();
+// })
 
+// app.use((req,res,next)=>{
+//     console.log('Hey, I am Middleware 2');
+//     // res.send('Middleware ends');
+//     next();
+// })
+
+//Logger
 app.use((req,res,next)=>{
-    console.log('Hey, I am Middleware 2');
-    // res.send('Middleware ends');
+    req.datetime=new Date(Date.now()).toString();
+    req.date=new Date(Date.now()).toDateString();
+    req.time=new Date(Date.now()).toTimeString();
+    console.log(req.method,req.hostname,req.path,req.datetime);
     next();
 })
 
