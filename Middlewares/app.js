@@ -26,12 +26,50 @@ app.use((req,res,next)=>{
 
 
 
+//Middleware for path starting with random
+app.use('/random',(req,res,next)=>{
+    console.log('Path starts with random');
+    next();
+})
+
 app.get('/',(req,res)=>{
     res.send('Hey, I am root');
 })
 
+//Login Middleware for api route- Method 1
+// app.use('/api',(req,res,next)=>{
+//     let {token}=req.query;
+//     if(token=='giveaccess'){
+//         next();
+//     }
+//     res.send("access denied");
+// })
+
+// app.get('/api',(req,res)=>{
+//     res.send('data');
+// })
+
+//Login Middleware for api route- Method 2
+const checkToken=(req,res,next)=>{
+    let {token}=req.query;
+    if(token=='giveaccess'){
+        next();
+    }else{
+        res.send("access denied");
+    }
+};
+
+app.get('/api',checkToken,(req,res)=>{
+    res.send('data');
+})
+
 app.get('/random',(req,res)=>{
     res.send('random page');
+})
+
+//404 Not found Middleware
+app.use((req,res)=>{
+    res.status(404).send("Page not found");
 })
 
 app.listen(8080,()=>{
