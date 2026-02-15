@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+const ExpressError=require('./ExpressError');
 
 //MiddleWare Chaining
 app.use((req,res,next)=>{
@@ -48,7 +49,8 @@ const checkToken=(req,res,next)=>{
     if(token=='giveaccess'){
         next();
     }else{
-        throw new Error("access denied");
+        // throw new Error("access denied");
+        throw new ExpressError(401,'ACCESS DENIED');
     }
 };
 
@@ -64,22 +66,27 @@ app.get('/err',(req,res)=>{
     abcd=abcd;
 })
 
-//Error Handling Middleware
-app.use((err,req,res,next)=>{
-    console.log("---ERROR MIDDLEWARE 1---");
-    next(err);
+app.get('/admin',(req,res)=>{
+    throw new ExpressError(403,'Some error');
 })
 
+//Custom Error Handling Middleware
 app.use((err,req,res,next)=>{
-    console.log("---ERROR MIDDLEWARE 2---");
-    next(err);
+    let {status=500,message='Some Error Occured'}=err;
+    console.log("---ERROR---");
+    res.status(status).send(message);
+    // next(err);
 })
+
+// app.use((err,req,res,next)=>{
+//     console.log("---ERROR MIDDLEWARE 2---");
+//     next(err);
+// })
 
 //404 Not found Middleware
 app.use((req,res)=>{
     res.status(404).send("Page not found");
 })
-
 app.listen(8080,()=>{
     console.log('listening on port 8080');
 })
