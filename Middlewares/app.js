@@ -1,19 +1,18 @@
 const express=require('express');
 const app=express();
 
+//MiddleWare Chaining
+app.use((req,res,next)=>{
+    console.log('Hey, I am Middleware 1');
+    // res.send('Middleware ends');
+    next();
+})
 
-// //MiddleWare Chaining
-// app.use((req,res,next)=>{
-//     console.log('Hey, I am Middleware 1');
-//     // res.send('Middleware ends');
-//     next();
-// })
-
-// app.use((req,res,next)=>{
-//     console.log('Hey, I am Middleware 2');
-//     // res.send('Middleware ends');
-//     next();
-// })
+app.use((req,res,next)=>{
+    console.log('Hey, I am Middleware 2');
+    // res.send('Middleware ends');
+    next();
+})
 
 //Logger
 app.use((req,res,next)=>{
@@ -24,16 +23,10 @@ app.use((req,res,next)=>{
     next();
 })
 
-
-
 //Middleware for path starting with random
 app.use('/random',(req,res,next)=>{
     console.log('Path starts with random');
     next();
-})
-
-app.get('/',(req,res)=>{
-    res.send('Hey, I am root');
 })
 
 //Login Middleware for api route- Method 1
@@ -55,7 +48,7 @@ const checkToken=(req,res,next)=>{
     if(token=='giveaccess'){
         next();
     }else{
-        res.send("access denied");
+        throw new Error("access denied");
     }
 };
 
@@ -65,6 +58,21 @@ app.get('/api',checkToken,(req,res)=>{
 
 app.get('/random',(req,res)=>{
     res.send('random page');
+})
+
+app.get('/err',(req,res)=>{
+    abcd=abcd;
+})
+
+//Error Handling Middleware
+app.use((err,req,res,next)=>{
+    console.log("---ERROR MIDDLEWARE 1---");
+    next(err);
+})
+
+app.use((err,req,res,next)=>{
+    console.log("---ERROR MIDDLEWARE 2---");
+    next(err);
 })
 
 //404 Not found Middleware
