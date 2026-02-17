@@ -3,7 +3,7 @@ const app=express();
 const mongoose=require('mongoose');
 const path=require('path');
 const methodOverride=require('method-override')
-
+const ExpressError=require('./ExpressError.js')
 const Chat=require('./models/chat.js')
 
 app.set('views',path.join(__dirname,'views'));
@@ -90,6 +90,12 @@ app.delete('/chats/:id/',async(req,res)=>{
 
 app.get('/',(req,res)=>{
     res.send('root is working');
+})
+
+//Error Handling Middleware
+app.use((err,req,res,next)=>{
+    let {status=500,message='some error occured'}=err;
+    res.status(status).send(message);
 })
 
 app.listen(8080,()=>{
