@@ -79,7 +79,7 @@ app.post('/chats',async (req,res,next)=>{
     }
 })
 
-//Show Route - Async Error Handling
+//Show Route - Async Error Handling with try catch
 app.get('/chats/:id',async (req,res,next)=>{
     try {
         let {id}=req.params;
@@ -93,6 +93,23 @@ app.get('/chats/:id',async (req,res,next)=>{
         next(err); 
     }
 })
+
+function asyncWrap(fn){
+    return function(req,res,next){
+        fn(req,res,next).catch(err=>next(err)); 
+    }
+}
+
+//Show Route - Async Error Handling with asyncWrap function
+app.get('/chats/:id',asyncWrap(async (req,res,next)=>{
+    let {id}=req.params;
+    let chat=await Chat.findById(id);
+    if(!chat){
+        // throw new ExpressError(404,'page not found');  Wrong way for Asynchronous errors
+        next(new ExpressError(404,'page not found'));
+    }
+    res.render('edit.ejs',{chat});   
+}))
 
 //Edit Route
 app.get('/chats/:id/edit',async (req,res)=>{
