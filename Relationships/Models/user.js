@@ -10,7 +10,7 @@ async function main(params) {
 }
 
 
-//One to Few Relation (Approach 1)
+//One to Many Relation (Approach 1- One to Few)
 const userSchema= new Schema({
     username: String,
     addresses: [
