@@ -4,8 +4,8 @@ function ProductTab(){
     // let options2=[<li>'hi-tech'</li>,<li>'durable'</li>,<li>'fast'</li>];
     return(
         <>
-            <Product title='phone' price={30000} features={options}/>
-            <Product title='laptop' price={80000}/>
+            <Product title='phone' price={20000} features={options}/>
+            <Product title='laptop' price={80000} features={options}/>
             <Product title='pencil'/>
         </>
     )
