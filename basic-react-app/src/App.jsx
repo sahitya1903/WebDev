@@ -1,6 +1,6 @@
 import './App.css';
 import Title from './Title';
-
+import ProductTab from './ProductTab';
 
 function Description(){
   return (
@@ -14,6 +14,7 @@ function App() {
       <h1>This is my app component</h1>
       <Title/>
       <Description/>
+      <ProductTab/>
     </>
   );
 }
