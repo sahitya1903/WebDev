@@ -1,19 +1,19 @@
 import './Product.css';
-import Discount from './Discount';
+import Price from './Price';
 
-function Product({ title, price = 1, features = [] }) {
-    let isDiscount=price>3000;
-    let styles={backgroundColor: isDiscount?'pink':null}; //dynamic styling
+function Product({title,idx}) {
+    let oldPrices=['10,000','20,000','16,000','4,000'];
+    let newPrices=['9,000','19,000','15,000','3,000'];
+    let description=[['8000 DPI', 'Programmable Buttons'],
+        ['Designed for Apple Pro','12 hours battery'],
+        ["Fastest Budget Laptop",'Core i7'],
+        ["Wireless Mouse",'Wifi+Bluetooth Receiver']];
     return (
-        <div className="Product" style={styles}>
-            <h3>{title}</h3>
-            <h5>Price: {price}</h5>
-            {isDiscount ? <Discount price={price} /> : null}
-            <ul>{features.map((feature) => (
-                <li key={feature}>{feature}</li>
-            ))}
-            </ul>
-
+        <div className="Product">
+            <h4>{title}</h4>
+            <p>{description[idx][0]}</p>
+            <p>{description[idx][1]}</p>
+            <Price oldPrice={oldPrices[idx]} newPrice={newPrices[idx]}/>
         </div>
     );
 }
