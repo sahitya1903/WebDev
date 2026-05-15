@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function TodoList(){
     // let [todos,setTodos]=useState(['sample Task']);
-    let [todos,setTodos]=useState([{task:'sample-task',id:uuidv4}]);
+    let [todos,setTodos]=useState([{task:'sample-task',id:uuidv4()}]);
     let [newTodo,setNewTodo]=useState("");
 
     let addNewTask=()=>{
@@ -16,6 +16,11 @@ export default function TodoList(){
         setNewTodo(event.target.value)
     }
 
+    let deleteTodo=(id)=>{
+        // console.log(id);
+        // setTodos(todos.filter((todo)=>todo.id!=id));
+        setTodos((prevTodos)=>{todos.filter((prevTodos)=>prevTodos.id!=id)});
+    }
     return(
         <>
             <input type="text" placeholder='Add a task' value={newTodo} onChange={updateTodoValue}/>
@@ -27,7 +32,10 @@ export default function TodoList(){
                 {
                     todos.map((todo)=>
                     // <li>{todo}</li>
-                    <li key={todo.id}>{todo.task}</li>
+                    <li key={todo.id}>
+                        <span>{todo.task}</span> &nbsp;&nbsp;
+                        <button onClick={()=>deleteTodo(todo.id)}>Delete</button>
+                    </li>
                 )}
 
             </ul>
