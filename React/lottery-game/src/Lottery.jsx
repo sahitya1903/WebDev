@@ -23,16 +23,17 @@ export default function Lottery() {
             return newArr
         });
         setWin(() => {
-            return digitsum === 15 ? 'Congratulations, you won' : 'xxxx'
+            return digitsum === 15 ? 'Congratulations, You Win' : 'Better Luck Next Time'
         });
     };
 
 
     return (
-        <>
-            <h3>Lottery {win}</h3>
+        <div>
+            <h3>Lottery Game</h3>
             <p>Lottery Ticket={arr}</p>
             <button onClick={ticket}>Get new ticket</button>
-        </>
+            <h3>{win}</h3>
+        </div>
     );
 }
