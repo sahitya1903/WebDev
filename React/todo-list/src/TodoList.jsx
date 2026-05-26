@@ -49,9 +49,6 @@ export default function TodoList(){
     }
 
     let markAsDone=(id)=>{
-        let styles={
-            textDecoration:'line-through'
-        }
         setTodos((prevTodos)=>
             prevTodos.map((todo)=>{
                 if(todo.id===id){
