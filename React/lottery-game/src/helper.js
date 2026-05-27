@@ -6,12 +6,12 @@ function generateTicket(n){
     return arr;
 }
 
-function sumArr(arr) {
-    let sum = 0;
+function sum(arr) {
+    let res = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+        res += arr[i];
     }
-    return sum;
+    return res;
 }
 
-export {generateTicket,sumArr};
+export {generateTicket,sum};
