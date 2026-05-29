@@ -1,4 +1,4 @@
-import { useState,useEffect, use } from "react"
+import { useState,useEffect} from "react"
 
 export default function Counter(){
     let [countX,setCountX]=useState(0);
