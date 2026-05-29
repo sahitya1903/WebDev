@@ -16,17 +16,16 @@ export default function Comment(){
     return(
         <div>
             <h3>All comments</h3>
-            {comments.map((comment,idx)=>(
-            <div className="comment" key={idx}>
-                <span>{comment.remarks}</span> <br />
-                <span>Rating: {comment.rating}</span> {'\u2605'} &nbsp;<br />
-                <span>--{comment.username}</span> &nbsp;
-            </div>
-            ))
-
+            {
+                comments.map((comment,idx)=>(
+                <div className="comment" key={idx}>
+                    <span>{comment.remarks}</span> <br />
+                    <span>Rating: {comment.rating}</span> {'\u2605'} &nbsp;<br />
+                    <span>--{comment.username}</span> &nbsp;
+                </div>
+                ))
             }
-
-            <hr /><hr />
+            <hr />
             <CommentsForm addNewComment={addNewComment}/>
         </div>
     )
