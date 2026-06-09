@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import AddForm from "./AddForm";
 
 export default function Todo() {
     const todos=useSelector((state)=>state.todos);
@@ -6,6 +7,7 @@ export default function Todo() {
     return (
     <>
       <h3>Todo List App</h3>
+      <AddForm/>
       <ul>
         {
             todos.map((todo)=>(
