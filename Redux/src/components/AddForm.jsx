@@ -8,8 +8,9 @@ export default function AddForm(){
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        console.log(task);
-        dispatch(addTodo(task))
+        // console.log(task);
+        dispatch(addTodo(task));
+        setTask("");
     }
     return(
     <>
