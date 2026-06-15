@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = 3000;
-const MONGODB_URI = "mongodb://root:root@localhost:27017";
+const MONGODB_URI = "mongodb://admin:password@localhost:27017";
 
 // Middleware
 app.use(express.json());
